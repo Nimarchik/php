@@ -7,8 +7,8 @@
       <p class="top-content__subtitle">Тренажерний зал - це клуб, будівля або велике приміщення, зазвичай зі спеціальним обладнанням, куди люди ходять займатися</p>
 
       <div class="top-content__btnBlock">
-        <button class="top-content__btnBlock-btn">
-          Приєднуйтесь</button>
+        <a class="top-content__btnBlock-btn" href="index.php?action=registration">
+          Приєднуйтесь</a>
         <button class="top-content__btnBlock-btn1">Дізнатися більше</button>
       </div>
     </div>

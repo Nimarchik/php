@@ -21,9 +21,16 @@
                 include 'layout/views/about.php';
             } elseif ($action === 'registration') {
                 include 'layout/views/registration.php';
+            } elseif ($action === 'registration_successful') {
+                include 'layout/views/registration_successful.php';
             } else {
                 include 'layout/views/main.php';
             }
+            ?>
+
+            <?php
+
+
             ?>
         </main>
 

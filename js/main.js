@@ -12,3 +12,5 @@ btn.addEventListener('click', () => {
   span2.classList.toggle('burger__menu-span2-active')
   span3.classList.toggle('burger__menu-span3-active')
 })
+
+
