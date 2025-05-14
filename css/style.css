@@ -383,7 +383,11 @@ html {
 .top-content__btnBlock-btn1,
 .health__content-btn,
 .register__content-form-btn,
-.success__content-btn {
+.success__content-btn,
+.login__content-link,
+.register__content-form-btn-login,
+.login__content-group-form-btn-reg,
+.login__content-form-btn {
     cursor: pointer;
     font-family: var(--alegreya);
     font-size: 22px;
@@ -405,7 +409,11 @@ html {
 .top-content__btnBlock-btn:hover,
 .health__content-btn:hover,
 .register__content-form-btn:hover,
-.success__content-btn:hover {
+.success__content-btn:hover,
+.login__content-link:hover,
+.register__content-form-btn-login:hover,
+.login__content-group-form-btn-reg:hover,
+.login__content-form-btn:hover {
     background-color: transparent;
     color: var(--color);
 }
@@ -576,7 +584,8 @@ html {
 .comments__content-subt,
 .about__content-subt,
 .register__content-subt,
-.success__content-subt {
+.success__content-subt,
+.login__content-subt {
     color: var(--color-btn);
     font-family: var(--josefin);
     font-size: 26px;
@@ -741,7 +750,8 @@ html {
 
 .about__content-title,
 .register__content-title,
-.success__content-title {
+.success__content-title,
+.login__content-title {
     font-size: 30px;
     font-family: var(--josefin);
     font-weight: 700;
@@ -754,11 +764,33 @@ html {
     padding: 100px 0;
 }
 
-.register__content {
+.login {
+    position: relative;
+    height: 600px;
+    padding: 100px 0;
+}
+
+.register__content,
+.login__content {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.login__content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+}
+
+.login__content-subt {
+    margin: 0;
+}
+
+.login__content-link {
+    display: inline-block;
 }
 
 .register__content-subt,
@@ -772,7 +804,8 @@ html {
     margin-bottom: 60px;
 }
 
-.register__content-form {
+.register__content-form,
+.login__content-form {
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -849,6 +882,7 @@ html {
     justify-content: center;
     text-align: center;
 }
+
 .success__content-sub {
     width: 500px;
     text-align: center;
@@ -859,6 +893,49 @@ html {
     margin-bottom: 30px;
 }
 
-.success__content-btn {
+.login__content-group-form {
+    display: none;
+    visibility: visible;
+}
 
+.login__content-group-form-active {
+    display: block;
+    visibility: visible;
+}
+
+/* .register__content-group-form-active {
+    display: block;
+    visibility: visible;
+} */
+
+.register__content-group-form-active {
+    display: none;
+    visibility: hidden;
+}
+
+.register__content-form-btn-login,
+.login__content-group-form-btn-reg {
+    display: block;
+    margin: 20px auto;
+}
+
+.register__content-form-error-email--remove,
+.login-error,
+.error-pass {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: 60px;
+    top: 50%;   
+    left: 50%;
+    z-index: 30;
+    background-color: var(--color);
+    color: #FFFAFB;
+    font-family: var(--alegreya);
+    font-size: 20px;
+    border-radius: 30px;
 }

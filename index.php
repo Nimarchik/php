@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Фітнес Зал</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css?<? echo time(); ?>">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- ?<? echo time(); ?> -->
 </head>
 
 <body>
@@ -23,6 +24,8 @@
                 include 'layout/views/registration.php';
             } elseif ($action === 'registration_successful') {
                 include 'layout/views/registration_successful.php';
+            } elseif ($action === 'login_successful') {
+                include 'layout/views/login_successful.php';
             } else {
                 include 'layout/views/main.php';
             }
