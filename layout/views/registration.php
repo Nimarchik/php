@@ -1,13 +1,25 @@
 <?php
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
-session_start();
+
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
+
+
+
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+
+
+
+
   $action = $_POST['action'] ?? '';
   $name = $_POST['name'] ?? '';
   $email = $_POST['email'] ?? '';
   $password = $_POST['password'] ?? '';
+  $boolean = $_POST['boolean'] ?? '';
 
   $host = 'localhost';
   $user = 'root';
@@ -26,12 +38,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
+    $isActive = 0;
 
     if ($result->num_rows > 0) {
       echo "<span class='register__content-form-error-email--remove'>Email вже використовується.</span>";
     } else {
-      $stmt = $conn->prepare("INSERT INTO users (name, email, pass) VALUES (?, ?, ?)");
-      $stmt->bind_param("sss", $name, $email, $hashedPassword);
+      $stmt = $conn->prepare("INSERT INTO users (name, email, pass, boolean) VALUES (?, ?, ?, ?)");
+      $stmt->bind_param("sssi", $name, $email, $hashedPassword, $isActive);
 
       if ($stmt->execute()) {
         header("Location: index.php?action=registration_successful");
@@ -42,16 +55,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
     $stmt->close();
   } elseif ($action === 'login') {
-    $stmt = $conn->prepare("SELECT id, name, pass FROM users WHERE email = ?");
+    $email = $_POST['email'] ?? '';
+    $password = $_POST['password'] ?? '';
+
+    $stmt = $conn->prepare("SELECT id, name, pass, boolean FROM users WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
 
-    if ($result->num_rows === 1) {
+    if ($result->num_rows > 0) {
       $user = $result->fetch_assoc();
+
       if (password_verify($password, $user['pass'])) {
         $_SESSION['id'] = $user['id'];
         $_SESSION['name'] = $user['name'];
+        $_SESSION['boolean'] = (int)$user['boolean'];
+
         header("Location: index.php?action=login_successful");
         exit;
       } else {

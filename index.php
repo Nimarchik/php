@@ -1,3 +1,8 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="uk">
 
@@ -26,6 +31,8 @@
                 include 'layout/views/registration_successful.php';
             } elseif ($action === 'login_successful') {
                 include 'layout/views/login_successful.php';
+            } elseif ($action === 'logout') {
+                include 'layout/views/logout.php';
             } else {
                 include 'layout/views/main.php';
             }
