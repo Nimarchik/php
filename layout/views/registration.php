@@ -10,6 +10,8 @@ if (session_status() === PHP_SESSION_NONE) {
 
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+
   $action = $_POST['action'] ?? '';
   $name = $_POST['name'] ?? '';
   $email = $_POST['email'] ?? '';
